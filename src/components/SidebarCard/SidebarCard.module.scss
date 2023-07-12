@@ -1,0 +1,18 @@
+.categoryTitle {
+  width: 120px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 16px;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  &:hover {
+    background-color: rgb(230, 223, 223);
+  }
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

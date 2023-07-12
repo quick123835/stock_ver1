@@ -1,0 +1,43 @@
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  // justify-content: space-around;
+  gap: 12px;
+  width: 95%;
+  height: 95%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.card {
+  width: 200px;
+  height: 100px;
+  border: 3px solid #b5b5be;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  &:hover {
+    background-color: rgb(230, 223, 223);
+  }
+  .cardName {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .cardInfo {
+    width: 90%;
+    margin-top: 16px;
+    display: flex;
+    // justify-content: space-around;
+    .stockId {
+      width: 90%;
+      height: 14px;
+      overflow: hidden;
+      text-align: center;
+    }
+  }
+}
