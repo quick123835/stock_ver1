@@ -1,7 +1,9 @@
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
+import { useStockContext } from '../../contexts/stockContexts'
 
-function Navbar1 ({ stockNum, onChange, onClick }) {
+function Navbar1 ({ onChange, onClick }) {
+  const { stockNum } = useStockContext()
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Container>
@@ -23,6 +25,7 @@ function Navbar1 ({ stockNum, onChange, onClick }) {
             className='btn btn-outline-secondary'
             type='button'
             id='button-addon2'
+            value={stockNum}
             onClick={() => {
               onClick()
             }}

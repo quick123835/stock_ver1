@@ -20,6 +20,7 @@ const Layout = () => {
 
   const handleInputChange = inputValue => {
     setStockNum(inputValue)
+    // setFilterStocks(stocks.filter(stock => stock.stock_id.includes(stockNum)))
   }
 
   const handleBtnClick = async () => {

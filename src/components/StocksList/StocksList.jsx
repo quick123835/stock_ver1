@@ -44,12 +44,10 @@ const StocksList = () => {
 
   useEffect(() => {
     getAllStocksAsync()
+  }, [])
+  useEffect(() => {
     if (stockNum) {
       setFilterStocks(stocks.filter(stock => stock.stock_id.includes(stockNum)))
-    } else if (currentCategory) {
-      setFilterStocks(
-        stocks.filter(stock => stock.industry_category === currentCategory)
-      )
     }
   }, [stockNum])
   const { container } = styles

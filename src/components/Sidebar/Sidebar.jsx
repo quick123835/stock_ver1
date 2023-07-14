@@ -9,6 +9,7 @@ const Sidebar = () => {
   const { container } = styles
   const {
     stocks,
+    setStockNum,
     setStockCategory,
     stockCategory,
     setFilterStocks,
@@ -25,6 +26,7 @@ const Sidebar = () => {
       stocks.filter(stock => stock.industry_category === category)
     )
     setCurrentCategory(category)
+    setStockNum('')
   }
 
   const handleStockClick = id => {
