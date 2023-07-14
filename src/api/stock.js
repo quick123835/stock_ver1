@@ -18,8 +18,8 @@ const lastYearDate = `${year - 1}-${month.toString().padStart(2, '0')}-${day
 export const getStockInfo = async id => {
   try {
     const { data } = await axios.get(
-      `${baseURL}?dataset=TaiwanStockPrice&data_id=${id}&start_date=${lastYearDate}&end_date=${formattedDate}`
-      // `${cors}${baseURL}?dataset=TaiwanStockPrice&data_id=${id}&start_date=${lastYearDate}&end_date=${formattedDate}`
+      // `${baseURL}?dataset=TaiwanStockPrice&data_id=${id}&start_date=${lastYearDate}&end_date=${formattedDate}`
+      `${cors}${baseURL}?dataset=TaiwanStockPrice&data_id=${id}&start_date=${lastYearDate}&end_date=${formattedDate}`
     )
     const { msg } = data
     const stockInfo = data.data
@@ -34,10 +34,10 @@ export const getStockInfo = async id => {
 
 export const getAllStocks = async () => {
   try {
-    const { data } = await axios.get(`${baseURL}/?dataset=TaiwanStockInfo`)
-    // const { data } = await axios.get(
-    //   `${cors}${baseURL}/?dataset=TaiwanStockInfo`
-    // )
+    // const { data } = await axios.get(`${baseURL}/?dataset=TaiwanStockInfo`)
+    const { data } = await axios.get(
+      `${cors}${baseURL}/?dataset=TaiwanStockInfo`
+    )
     if (data) {
       return { success: true, ...data }
     }
