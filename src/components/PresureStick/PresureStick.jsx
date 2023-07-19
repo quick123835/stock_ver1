@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useStockContext } from '../../contexts/stockContexts'
 
 const PresureStick = ({ stockDetail, stockName }) => {
-  const [chartOptions, setChartOptions] = useState(null)
+  const [chartOptions, setChartOptions] = useState({})
   const { currentStock } = useStockContext()
 
   // 收盤價差
@@ -202,7 +202,10 @@ const PresureStick = ({ stockDetail, stockName }) => {
           data: volumnData, // 这里填入成交量数据
           yAxis: 2 // 使用第二个y轴来显示成交量图
         }
-      ]
+      ],
+      accessibility: {
+        enabled: false // 關閉可訪問性功能
+      }
     }
     setChartOptions(options)
   }, [stockDetail, stockName])

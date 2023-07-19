@@ -14,23 +14,19 @@ const Sidebar = () => {
     stockCategory,
     setFilterStocks,
     filterStocks,
-    setCurrentCategory,
-    currentCategory,
-    currentStatus
+    setCurrentCategory
   } = useStockContext()
 
   const navigate = useNavigate()
 
   const handleCategoryClick = category => {
+    navigate('/stock')
     setFilterStocks(
       stocks.filter(stock => stock.industry_category === category)
     )
     setCurrentCategory(category)
-    setStockNum('')
-  }
 
-  const handleStockClick = id => {
-    navigate(`/stock/${id}`)
+    setStockNum('')
   }
 
   useEffect(() => {
@@ -46,26 +42,11 @@ const Sidebar = () => {
 
   return (
     <div className={container}>
-      {currentStatus === 'stockList' &&
-        stockCategory.map((category, index) => {
-          return (
-            <SidebarCard
-              key={index}
-              category={category}
-              categoryOnClick={handleCategoryClick}
-            />
-          )
-        })}
-      {currentStatus === 'stock' &&
-        filterStocks.map((stock, index) => {
-          return (
-            <SidebarCard
-              key={index}
-              stock={stock}
-              stockOnClick={handleStockClick}
-            />
-          )
-        })}
+      <SidebarCard
+        stockCategory={stockCategory}
+        filterStocks={filterStocks}
+        categoryOnClick={handleCategoryClick}
+      />
     </div>
   )
 }

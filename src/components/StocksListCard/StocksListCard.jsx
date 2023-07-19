@@ -8,7 +8,7 @@ const StocksListCard = ({ stocksList, cardOnClick }) => {
   const rowCount = Math.ceil(stocksList.length / columnCount)
   const columnWidth = 200
   const rowHeight = 100
-  const GUTTER_SIZE = 10
+  const GUTTER_SIZE = 50
 
   const cellRenderer = ({ columnIndex, rowIndex, style }) => {
     const index = rowIndex * columnCount + columnIndex
@@ -22,9 +22,9 @@ const StocksListCard = ({ stocksList, cardOnClick }) => {
         style={{
           ...style,
           left: style.left + GUTTER_SIZE,
-          top: style.top + GUTTER_SIZE,
-          width: style.width - GUTTER_SIZE,
-          height: style.height - GUTTER_SIZE
+          top: style.top + 10,
+          width: style.width - 10,
+          height: style.height - 10
         }}
         key={index}
         onClick={() => cardOnClick?.(stock.stock_name, stock.stock_id)}
