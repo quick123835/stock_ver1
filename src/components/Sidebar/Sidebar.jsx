@@ -21,11 +21,7 @@ const Sidebar = () => {
 
   const handleCategoryClick = category => {
     navigate('/stock')
-    setFilterStocks(
-      stocks.filter(stock => stock.industry_category === category)
-    )
     setCurrentCategory(category)
-
     setStockNum('')
   }
 

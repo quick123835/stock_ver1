@@ -56,7 +56,11 @@ const Stock = () => {
     <main>
       <div className={candleContainer}>
         {/* <Candlestick stockDetail={stockDetail} stockName={stockName} /> */}
-        <PresureStick stockDetail={stockDetail} stockName={stockName} />
+        <PresureStick
+          stockDetail={stockDetail}
+          stockName={stockName}
+          stockId={stockId}
+        />
       </div>
     </main>
   )

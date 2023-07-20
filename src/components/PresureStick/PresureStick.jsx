@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'
 import { useStockContext } from '../../contexts/stockContexts'
 
-const PresureStick = ({ stockDetail, stockName }) => {
+const PresureStick = ({ stockDetail, stockName, stockId }) => {
   const [chartOptions, setChartOptions] = useState({})
   const { currentStock } = useStockContext()
 
@@ -136,7 +136,7 @@ const PresureStick = ({ stockDetail, stockName }) => {
         ]
       },
       title: {
-        text: stockName
+        text: `${stockId} ${stockName}`
       },
       chart: {
         height: 600 // 设置整个图表的高度

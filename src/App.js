@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Stock from './components/Stock/Stock'
 import Layout from './components/Layout/Layout'
@@ -10,10 +10,11 @@ import './reset.css'
 
 function App () {
   return (
-    <div className='App'>
+    <div className='App' path='/stock'>
       <StockProvider>
         <BrowserRouter>
           <Routes>
+            <Route path='/' element={<Navigate to='/stock' />} />
             <Route path='/stock' element={<Layout />}>
               <Route path='/stock' element={<StocksList />}></Route>
               <Route path='/stock/:id' element={<Stock />}></Route>

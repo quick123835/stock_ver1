@@ -24,7 +24,7 @@ const StocksList = () => {
       const { success, data } = await getAllStocks()
       if (success) {
         setStocks(data.reverse())
-        setFilterStocks(stocks)
+        // setFilterStocks(data)
         return data
       }
       return data
@@ -42,23 +42,27 @@ const StocksList = () => {
     navigate(id)
   }
 
-  useEffect(() => {
-    getAllStocksAsync()
-  }, [])
+  getAllStocksAsync()
 
   useEffect(() => {
     if (stockNum) {
       setFilterStocks(stocks.filter(stock => stock.stock_id.includes(stockNum)))
     } else if (currentCategory) {
-      stocks.filter(stock => stock.industry_category === currentCategory)
+      console.log('fuck')
+      setFilterStocks(
+        stocks.filter(stock => stock.industry_category === currentCategory)
+      )
     } else {
       setFilterStocks(stocks)
     }
-  }, [stockNum, navigate])
+  }, [stockNum, currentCategory])
   const { container } = styles
   return (
     <div className={container}>
-      <StocksListCard stocksList={filterStocks} cardOnClick={handleCardClick} />
+      <StocksListCard
+        stocksList={filterStocks.length !== 0 ? filterStocks : stocks}
+        cardOnClick={handleCardClick}
+      />
     </div>
   )
 }
