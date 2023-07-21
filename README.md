@@ -2,8 +2,8 @@
 
 ## 頁面截圖：
 
-![](./public/screenshot1.JPG)
-![](./public/screenshot2.JPG)
+![image](./public/screenshot1.jpg)
+![image](./public/screenshot2.JPG)
 
 ## 👋 功能說明
 
