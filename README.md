@@ -3,7 +3,7 @@
 ## 頁面截圖：
 
 ![image](./public/screenshot1.jpg)
-![image](./public/screenshot2.JPG)
+![image](./public/screenshot2.jpg)
 
 ## 👋 功能說明
 
