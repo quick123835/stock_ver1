@@ -27,7 +27,13 @@ const StocksListCard = ({ stocksList, cardOnClick }) => {
           height: style.height - 10
         }}
         key={index}
-        onClick={() => cardOnClick?.(stock.stock_name, stock.stock_id)}
+        onClick={() =>
+          cardOnClick?.(
+            stock.stock_name,
+            stock.stock_id,
+            stock.industry_category
+          )
+        }
       >
         <div className={cardName}>{stock.stock_name}</div>
         <div className={cardInfo}>

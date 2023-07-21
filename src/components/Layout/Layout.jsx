@@ -2,7 +2,6 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import Navbar1 from '../Nav/Nav'
 import Sidebar from '../Sidebar/Sidebar'
 import styles from './Layout.module.scss'
-import { getStockInfo } from '../../api/stock'
 import { useStockContext } from '../../contexts/stockContexts'
 
 const Layout = () => {
@@ -12,9 +11,10 @@ const Layout = () => {
   const {
     stocks,
     stockNum,
+    currentStock,
     setStockNum,
-    setStockData,
     setCurrentStock,
+    setCurrentStatus,
     setFilterStocks
   } = useStockContext()
 
@@ -24,19 +24,19 @@ const Layout = () => {
   }
 
   const handleBtnClick = async () => {
-    console.log(stockNum)
     try {
-      const data = await getStockInfo(stockNum)
-      setStockData(data)
+      const stockInfo = stocks.find(s => s.stock_id === stockNum)
+      setCurrentStock({
+        name: stockInfo.stock_name,
+        id: stockInfo.stock_id,
+        category: stockInfo.industry_category
+      })
+      setCurrentStatus('stock')
       setFilterStocks(
-        stocks.filter(stock => stock.stock_id.includes(stockNum)),
-        setCurrentStock({
-          id: stockNum
-        })
+        stocks.filter(s => s.industry_category === stockInfo.industry_category)
       )
-      console.log('資料取得成功')
-      navigate(`/stock/${stockNum}`)
       setStockNum('')
+      navigate(`/stock/${stockInfo.stock_id}`)
     } catch (error) {
       console.error(error)
     }

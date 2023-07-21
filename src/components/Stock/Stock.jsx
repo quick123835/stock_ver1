@@ -1,15 +1,15 @@
 import styles from './Stock.module.scss'
-import Candlestick from '../Candlestick/Candlestick'
 import { useEffect, useState } from 'react'
-import { getStockInfo, getAllStocks } from '../../api/stock'
+import { getStockInfo } from '../../api/stock'
 import { useParams } from 'react-router-dom'
 import { useStockContext } from '../../contexts/stockContexts'
 import PresureStick from '../PresureStick/PresureStick'
 
 const Stock = () => {
   const { candleContainer } = styles
-  const { currentStock, setCurrentStock } = useStockContext()
+  const { currentStock } = useStockContext()
   const [stockDetail, setStockDetail] = useState([])
+  const [loading, setLoading] = useState('loading')
   const stockName = currentStock.name
   const stockId = useParams().id
 
@@ -18,6 +18,7 @@ const Stock = () => {
       const { success, stockInfo } = await getStockInfo(id)
       if (success) {
         setStockDetail(stockInfo)
+        setLoading('loadingComplete')
         return stockInfo
       }
       return stockInfo
@@ -26,41 +27,21 @@ const Stock = () => {
     }
   }
 
-  const getStocksName = async stockId => {
-    try {
-      const { success, data } = await getAllStocks()
-      if (success) {
-        const stockCategory = []
-        const stockName = data.filter(stock => stock.stock_id === stockId)
-        stockName.map(stock => {
-          stockCategory.push(stock.industry_category)
-        })
-        setCurrentStock({
-          ...currentStock,
-          name: stockName[0].stock_name,
-          category: stockCategory.join(', ')
-        })
-        return data
-      }
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   useEffect(() => {
-    getStocksName(stockId)
     getStockInfoAsync(stockId)
   }, [stockId])
 
   return (
     <main>
       <div className={candleContainer}>
-        {/* <Candlestick stockDetail={stockDetail} stockName={stockName} /> */}
-        <PresureStick
-          stockDetail={stockDetail}
-          stockName={stockName}
-          stockId={stockId}
-        />
+        {loading === 'loading' && <div>Loading...</div>}
+        {loading === 'loadingComplete' && (
+          <PresureStick
+            stockDetail={stockDetail}
+            stockName={stockName}
+            stockId={stockId}
+          />
+        )}
       </div>
     </main>
   )

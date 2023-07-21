@@ -24,6 +24,7 @@ export const getStockInfo = async id => {
     const { msg } = data
     const stockInfo = data.data
     if (msg === 'success') {
+      console.log('個股資料取的成功')
       return { success: true, stockInfo }
     }
     return data
@@ -39,6 +40,7 @@ export const getAllStocks = async () => {
       `${cors}${baseURL}/?dataset=TaiwanStockInfo`
     )
     if (data) {
+      console.log('全部資料取得成功')
       return { success: true, ...data }
     }
     console.log(data)

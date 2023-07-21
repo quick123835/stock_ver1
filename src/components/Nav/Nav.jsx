@@ -10,9 +10,7 @@ function Navbar1 ({ onChange, onClick }) {
         <Navbar.Brand href='/stock'>
           <h1>買賣力道基地</h1>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-        <Navbar.Collapse id='responsive-navbar-nav'></Navbar.Collapse>
-        <div className='input-group mb-3 w-25 d-flex align-items-center'>
+        <div className='input-group w-25'>
           <input
             type='text'
             className='form-control'

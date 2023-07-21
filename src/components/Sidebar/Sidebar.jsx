@@ -1,7 +1,6 @@
 import styles from './Sidebar.module.scss'
-import { getAllStocks } from '../../api/stock'
 import { useStockContext } from '../../contexts/stockContexts'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import SidebarCard from '../SidebarCard/SidebarCard'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,9 +11,9 @@ const Sidebar = () => {
     setStockNum,
     setStockCategory,
     stockCategory,
-    setFilterStocks,
     filterStocks,
-    setCurrentCategory
+    setCurrentCategory,
+    setCurrentStock
   } = useStockContext()
 
   const navigate = useNavigate()
@@ -23,6 +22,16 @@ const Sidebar = () => {
     navigate('/stock')
     setCurrentCategory(category)
     setStockNum('')
+  }
+
+  const handleStockClick = data => {
+    const stock = stocks.find(s => s.stock_name === data)
+    setCurrentStock({
+      id: stock.stock_id,
+      name: stock.stock_name,
+      category: stock.industry_category
+    })
+    navigate(`/stock/${stock.stock_id}`)
   }
 
   useEffect(() => {
@@ -37,13 +46,16 @@ const Sidebar = () => {
   }, [stocks])
 
   return (
-    <div className={container}>
-      <SidebarCard
-        stockCategory={stockCategory}
-        filterStocks={filterStocks}
-        categoryOnClick={handleCategoryClick}
-      />
-    </div>
+    <>
+      <div className={container}>
+        <SidebarCard
+          stockCategory={stockCategory}
+          filterStocks={filterStocks}
+          categoryOnClick={handleCategoryClick}
+          stockOnClick={handleStockClick}
+        />
+      </div>
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import styles from './StocksList.module.scss'
 import { getAllStocks } from '../../api/stock'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useStockContext } from '../../contexts/stockContexts'
 import { useNavigate } from 'react-router-dom'
 import StocksListCard from '../StocksListCard/StocksListCard'
@@ -16,6 +16,7 @@ const StocksList = () => {
     setCurrentStatus,
     currentCategory
   } = useStockContext()
+  const [loading, setLoading] = useState('loading')
 
   const navigate = useNavigate()
 
@@ -25,6 +26,7 @@ const StocksList = () => {
       if (success) {
         setStocks(data.reverse())
         // setFilterStocks(data)
+        setLoading('loadingComplete')
         return data
       }
       return data
@@ -33,22 +35,27 @@ const StocksList = () => {
     }
   }
 
-  const handleCardClick = (name, id) => {
+  const handleCardClick = (name, id, category) => {
     setCurrentStock({
       id,
-      name
+      name,
+      category
     })
     setCurrentStatus('stock')
+    setFilterStocks(
+      stocks.filter(stock => stock.industry_category === category)
+    )
     navigate(id)
   }
 
-  getAllStocksAsync()
+  useEffect(() => {
+    getAllStocksAsync()
+  }, [])
 
   useEffect(() => {
     if (stockNum) {
       setFilterStocks(stocks.filter(stock => stock.stock_id.includes(stockNum)))
     } else if (currentCategory) {
-      console.log('fuck')
       setFilterStocks(
         stocks.filter(stock => stock.industry_category === currentCategory)
       )
@@ -58,12 +65,21 @@ const StocksList = () => {
   }, [stockNum, currentCategory])
   const { container } = styles
   return (
-    <div className={container}>
-      <StocksListCard
-        stocksList={filterStocks.length !== 0 ? filterStocks : stocks}
-        cardOnClick={handleCardClick}
-      />
-    </div>
+    <>
+      {loading === 'loading' && (
+        <div className={container}>
+          <div>Loading...</div>
+        </div>
+      )}
+      {loading === 'loadingComplete' && (
+        <div className={container}>
+          <StocksListCard
+            stocksList={filterStocks.length !== 0 ? filterStocks : stocks}
+            cardOnClick={handleCardClick}
+          />
+        </div>
+      )}
+    </>
   )
 }
 
