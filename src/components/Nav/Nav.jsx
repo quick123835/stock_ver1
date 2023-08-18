@@ -7,7 +7,7 @@ function Navbar1 ({ onChange, onClick }) {
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand href='/stock'>
+        <Navbar.Brand href='/stock_ver1'>
           <h1>買賣力道基地</h1>
         </Navbar.Brand>
         <div className='input-group w-25'>
