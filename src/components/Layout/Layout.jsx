@@ -11,7 +11,6 @@ const Layout = () => {
   const {
     stocks,
     stockNum,
-    currentStock,
     setStockNum,
     setCurrentStock,
     setCurrentStatus,

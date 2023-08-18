@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.scss'
 import { useStockContext } from '../../contexts/stockContexts'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import SidebarCard from '../SidebarCard/SidebarCard'
 import { useNavigate } from 'react-router-dom'
 
