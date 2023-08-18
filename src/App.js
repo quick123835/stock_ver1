@@ -10,11 +10,10 @@ import './reset.css'
 
 function App () {
   return (
-    <div className='App' path='/stock'>
+    <div className='App' path='/'>
       <StockProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Navigate to='/stock' />} />
             <Route path='/stock' element={<Layout />}>
               <Route path='/stock' element={<StocksList />}></Route>
               <Route path='/stock/:id' element={<Stock />}></Route>

@@ -25,7 +25,6 @@ const StocksList = () => {
       const { success, data } = await getAllStocks()
       if (success) {
         setStocks(data.reverse())
-        // setFilterStocks(data)
         setLoading('loadingComplete')
         return data
       }
