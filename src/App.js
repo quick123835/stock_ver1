@@ -14,9 +14,9 @@ function App () {
       <StockProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/stock' element={<Layout />}>
-              <Route path='/stock' element={<StocksList />}></Route>
-              <Route path='/stock/:id' element={<Stock />}></Route>
+            <Route path='/' element={<Layout />}>
+              <Route path='/' element={<StocksList />}></Route>
+              <Route path='/:id' element={<Stock />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

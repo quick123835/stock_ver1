@@ -19,7 +19,7 @@ const Sidebar = () => {
   const navigate = useNavigate()
 
   const handleCategoryClick = category => {
-    navigate('/stock')
+    navigate('/')
     setCurrentCategory(category)
     setStockNum('')
   }
@@ -31,7 +31,7 @@ const Sidebar = () => {
       name: stock.stock_name,
       category: stock.industry_category
     })
-    navigate(`/stock/${stock.stock_id}`)
+    navigate(`/${stock.stock_id}`)
   }
 
   useEffect(() => {
