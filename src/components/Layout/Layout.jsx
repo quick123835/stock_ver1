@@ -35,7 +35,7 @@ const Layout = () => {
         stocks.filter(s => s.industry_category === stockInfo.industry_category)
       )
       setStockNum('')
-      navigate(`/${stockInfo.stock_id}`)
+      navigate(`/stock_ver1/${stockInfo.stock_id}`)
     } catch (error) {
       console.error(error)
     }

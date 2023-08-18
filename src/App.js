@@ -10,13 +10,13 @@ import './reset.css'
 
 function App () {
   return (
-    <div className='App' path='/'>
+    <div className='App' path='/stock_ver1'>
       <StockProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Layout />}>
-              <Route path='/' element={<StocksList />}></Route>
-              <Route path='/:id' element={<Stock />}></Route>
+            <Route path='/stock_ver1' element={<Layout />}>
+              <Route path='/stock_ver1' element={<StocksList />}></Route>
+              <Route path='/stock_ver1/:id' element={<Stock />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
