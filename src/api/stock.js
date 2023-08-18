@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const cors = 'https://cors-anywhere.herokuapp.com/' // use cors-anywhere to fetch api data
+const cors = 'https://serene-hollows-91139-6a64bb814871.herokuapp.com/' // use cors-anywhere to fetch api data
 const baseURL = 'https://api.finmindtrade.com/api/v4/data'
 
 const date = new Date()
