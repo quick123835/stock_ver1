@@ -1,60 +1,58 @@
 import styles from './StocksListCard.module.scss'
 import { FixedSizeGrid as Grid } from 'react-window'
+import { useState } from 'react'
 
 const StocksListCard = ({ stocksList, cardOnClick }) => {
   const { listContainer, card, cardInfo, cardName, stockId } = styles
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 24
 
-  const columnCount = 4
-  const rowCount = Math.ceil(stocksList.length / columnCount)
-  const columnWidth = 200
-  const rowHeight = 100
-  const GUTTER_SIZE = 50
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentPageData = stocksList.slice(startIndex, endIndex)
 
-  const cellRenderer = ({ columnIndex, rowIndex, style }) => {
-    const index = rowIndex * columnCount + columnIndex
-    if (index >= stocksList.length) {
-      return null
-    }
-    const stock = stocksList[index]
-    return (
-      <div
-        className={`${card} ${styles.cardMargin}`}
-        style={{
-          ...style,
-          left: style.left + GUTTER_SIZE,
-          top: style.top + 10,
-          width: style.width - 10,
-          height: style.height - 10
-        }}
-        key={index}
-        onClick={() =>
-          cardOnClick?.(
-            stock.stock_name,
-            stock.stock_id,
-            stock.industry_category
-          )
-        }
-      >
-        <div className={cardName}>{stock.stock_name}</div>
-        <div className={cardInfo}>
-          <span className={stockId}>代號: {stock.stock_id}</span>
-        </div>
-      </div>
-    )
-  }
+  const totalPages = Math.ceil(stocksList.length / itemsPerPage)
+
   return (
-    <div className={listContainer}>
-      <Grid
-        columnCount={columnCount}
-        columnWidth={columnWidth}
-        rowCount={rowCount}
-        rowHeight={rowHeight}
-        width={900} // 計算總寬度，包含間隔
-        height={750} // 計算總高度，包含間隔
-      >
-        {cellRenderer}
-      </Grid>
-    </div>
+    <>
+      <div className={listContainer}>
+        {currentPageData.map((item, index) => (
+          <div
+            className={card}
+            key={index}
+            onClick={() =>
+              cardOnClick?.(
+                item.stock_name,
+                item.stock_id,
+                item.industry_category
+              )
+            }
+          >
+            <div className={cardName}>{item.stock_name}</div>
+            <div className={cardInfo}>
+              <span className={stockId}>代號: {item.stock_id}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          Previous
+        </button>
+        <span>
+          {currentPage} / {totalPages}
+        </span>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          Next
+        </button>
+      </div>
+    </>
   )
 }
 
