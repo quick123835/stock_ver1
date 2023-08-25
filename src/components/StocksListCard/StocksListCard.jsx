@@ -1,11 +1,12 @@
 import styles from './StocksListCard.module.scss'
-import { FixedSizeGrid as Grid } from 'react-window'
 import { useState } from 'react'
+import { useStockContext } from '../../contexts/stockContexts'
 
 const StocksListCard = ({ stocksList, cardOnClick }) => {
-  const { listContainer, card, cardInfo, cardName, stockId } = styles
-  const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 24
+  const { listContainer, card, cardInfo, cardName, stockId, paginator } = styles
+  // const [currentPage, setCurrentPage] = useState(1)
+  const { currentPage, setCurrentPage } = useStockContext()
+  const itemsPerPage = 25
 
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
@@ -35,7 +36,7 @@ const StocksListCard = ({ stocksList, cardOnClick }) => {
           </div>
         ))}
       </div>
-      <div>
+      <div className={paginator}>
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage(currentPage - 1)}

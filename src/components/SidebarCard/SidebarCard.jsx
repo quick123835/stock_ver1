@@ -13,6 +13,7 @@ const SidebarCard = ({
 }) => {
   const { currentCategory, currentStatus, currentStock } = useStockContext()
   const renderStocks = filterStocks.map(stock => stock.stock_name)
+
   const Row = ({ data, index, style }) => {
     const { active } = styles
     return (

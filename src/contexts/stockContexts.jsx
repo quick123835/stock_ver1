@@ -12,6 +12,7 @@ export const StockProvider = ({ children }) => {
   const [stockCategory, setStockCategory] = useState([])
   const [currentCategory, setCurrentCategory] = useState('')
   const [currentStatus, setCurrentStatus] = useState('stockList')
+  const [currentPage, setCurrentPage] = useState(1)
   const value = {
     stockNum,
     setStockNum,
@@ -30,7 +31,9 @@ export const StockProvider = ({ children }) => {
     currentCategory,
     setCurrentCategory,
     currentStatus,
-    setCurrentStatus
+    setCurrentStatus,
+    currentPage,
+    setCurrentPage
   }
   return <StockContext.Provider value={value}>{children}</StockContext.Provider>
 }

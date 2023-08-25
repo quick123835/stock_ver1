@@ -13,7 +13,8 @@ const Sidebar = () => {
     stockCategory,
     filterStocks,
     setCurrentCategory,
-    setCurrentStock
+    setCurrentStock,
+    setCurrentPage
   } = useStockContext()
 
   const navigate = useNavigate()
@@ -21,6 +22,7 @@ const Sidebar = () => {
   const handleCategoryClick = category => {
     navigate('/stock_ver1')
     setCurrentCategory(category)
+    setCurrentPage(1)
     setStockNum('')
   }
 
