@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap'
 import Stock from './components/Stock/Stock'
 import Layout from './components/Layout/Layout'
 import StocksList from './components/StocksList/StocksList'

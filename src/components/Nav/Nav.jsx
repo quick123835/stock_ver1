@@ -1,6 +1,9 @@
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import { useStockContext } from '../../contexts/stockContexts'
+import styles from './Nav.module.scss'
+
+const { mobileInput } = styles
 
 function Navbar1 ({ onChange, onClick }) {
   const { stockNum } = useStockContext()
@@ -10,7 +13,7 @@ function Navbar1 ({ onChange, onClick }) {
         <Navbar.Brand href='/stock_ver1'>
           <h1>買賣力道基地</h1>
         </Navbar.Brand>
-        <div className='input-group w-25'>
+        <div className={`input-group w-25 ${mobileInput}`}>
           <input
             type='text'
             className='form-control'

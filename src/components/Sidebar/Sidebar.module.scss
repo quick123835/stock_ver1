@@ -1,6 +1,6 @@
 .container {
   width: 20%;
-  height: 650px;
+  height: 90vh;
   border: 3px solid #b5b5be;
   margin: 0 auto;
   margin-top: 16px;
@@ -13,9 +13,25 @@
     display: none;
   }
 }
+.sidebarBtn {
+  display: none;
+}
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
   .container {
+    display: none;
+  }
+  .sidebarBtn {
+    display: flex;
     position: absolute;
+
+    &:hover {
+      background-color: rgb(121, 119, 119) !important;
+    }
+  }
+  .mobileSidebar {
+    width: 30%;
+    margin-top: 53px;
+    background-color: rgb(211, 208, 208);
   }
 }

@@ -1,11 +1,18 @@
 main {
   height: 90%;
   width: 80%;
+  margin: 0 auto;
   margin-top: 16px;
   .candleContainer {
     border: 3px solid #b5b5be;
     width: 90%;
     height: 660px;
     margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    width: 100%;
   }
 }

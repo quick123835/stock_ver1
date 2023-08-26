@@ -6,7 +6,7 @@ const StocksListCard = ({ stocksList, cardOnClick }) => {
   const { listContainer, card, cardInfo, cardName, stockId, paginator } = styles
   // const [currentPage, setCurrentPage] = useState(1)
   const { currentPage, setCurrentPage } = useStockContext()
-  const itemsPerPage = 25
+  const itemsPerPage = 24
 
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage

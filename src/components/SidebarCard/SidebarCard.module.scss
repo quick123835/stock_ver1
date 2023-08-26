@@ -1,12 +1,11 @@
 .categoryTitle {
-  width: 100%;
-  // height: 50px;
+  width: 80%;
   border: 1px solid black;
   border-radius: 5px;
-  margin-top: 16px;
+  margin-top: 12px;
   padding: 8px;
   cursor: pointer;
-  // box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   &:hover {
     background-color: rgb(230, 223, 223);
   }

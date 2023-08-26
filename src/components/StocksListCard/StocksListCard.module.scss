@@ -39,6 +39,10 @@
 }
 
 .paginator {
+  background-color: rgb(206, 204, 204);
+  margin: 0 auto;
+  padding: 8px;
+  margin-top: 20px;
   button {
     width: 80px;
     border-radius: 5px;
@@ -52,8 +56,11 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
   .listContainer {
     width: 100%;
+  }
+  .card {
+    width: 120px;
   }
 }

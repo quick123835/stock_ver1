@@ -5,7 +5,7 @@ import styles from './Layout.module.scss'
 import { useStockContext } from '../../contexts/stockContexts'
 
 const Layout = () => {
-  const { container } = styles
+  const { container, mainContainer } = styles
   const navigate = useNavigate()
 
   const {
@@ -41,7 +41,7 @@ const Layout = () => {
   }
 
   return (
-    <div>
+    <div className={mainContainer}>
       <Navbar1
         stockNum={stockNum}
         onChange={handleInputChange}
